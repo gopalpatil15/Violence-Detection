@@ -1,0 +1,9 @@
+tensorflow>=2.13.0
+keras>=2.13.0
+opencv-python
+numpy
+streamlit
+matplotlib
+scikit-learn
+h5py
+email-validator
