@@ -149,15 +149,4 @@ You can modify:
 
 This project is for educational/research purposes. The model may not perform well in all real-world scenarios. Always test thoroughly before deploying in critical environments.
 
----
 
-## 📄 License
-
-MIT License – feel free to use, modify, and share.
-
----
-
-## 👨‍💻 Developed By
-
-**Gopal Patil**  
-🔗 [GitHub Profile](https://github.com/gopalpatil15) (Update this link)
