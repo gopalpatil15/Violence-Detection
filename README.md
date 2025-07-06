@@ -1,6 +1,6 @@
 # 🛡️ Real-Time Violence Detection System
 
-This project implements a real-time violence detection system using **deep learning**, **OpenCV**, and **Streamlit**. It leverages a pre-trained binary classification model (e.g., CNN + LSTM or 3D CNN) to identify violent behavior in videos, either live from a webcam or from an uploaded video file.
+This project implements a real-time violence detection system using **deep learning**, **OpenCV**, and **Streamlit**. It leverages a pre-trained binary classification model (e.g.3D CNN) to identify violent behavior in videos, either live from a webcam or from an uploaded video file.
 
 ---
 
@@ -27,6 +27,34 @@ This project implements a real-time violence detection system using **deep learn
 > You can replace `violence.h5` with your own trained model in the same format.
 
 ---
+📊 Dataset Information
+
+The model was trained on the RWF-2000 dataset.
+
+Dataset Details:
+----------------
+- Total Videos: 2,000
+  - Fight: 1,000 videos
+  - NonFight: 1,000 videos
+
+- Clip Duration: 5–10 seconds
+- Original Resolution: 320×240
+- Preprocessed Size: 64×64
+
+Source:
+-------
+Dataset Name: RWF-2000
+Kaggle URL: https://www.kaggle.com/datasets/vulamnguyen/rwf2000
+
+Download Command (for Kaggle CLI):
+-----------------------------------
+!kaggle datasets download -d vulamnguyen/rwf2000
+
+Note:
+-----
+This dataset is not included in this repository.
+Please download it manually from Kaggle before training or inference.
+
 
 ## 🗂️ Project Structure
 
@@ -132,4 +160,4 @@ MIT License – feel free to use, modify, and share.
 ## 👨‍💻 Developed By
 
 **Gopal Patil**  
-🔗 [GitHub Profile](https://github.com/your-github) (Update this link)
+🔗 [GitHub Profile](https://github.com/gopalpatil15) (Update this link)
