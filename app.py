@@ -87,7 +87,7 @@ def send_email_alert(image_path, label, confidence, receiver):
 
     try:
         with smtplib.SMTP_SSL('smtp.gmail.com', 465) as smtp:
-            smtp.login("bhamaresonu15@gmail.com", "mgef rnjq dxxk ruhu")  # Replace with app password
+            smtp.login("your@gmail.com", "password")  # Replace with app password
             smtp.send_message(msg)
     except Exception as e:
         st.warning(f"⚠️ Could not send email: {str(e)}")
@@ -121,6 +121,7 @@ def video_processing_thread(video_path, progress_bar, video_display, violence_co
                 break
                 
             processed_frames += 1
+            
             
             # Process frame
             resized = cv2.resize(frame, FRAME_SIZE)
