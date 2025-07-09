@@ -145,8 +145,4 @@ You can modify:
 
 ---
 
-## ⚠️ Disclaimer
-
-This project is for educational/research purposes. The model may not perform well in all real-world scenarios. Always test thoroughly before deploying in critical environments.
-
 
