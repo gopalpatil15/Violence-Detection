@@ -1,100 +1,98 @@
+# Real-Time Violence Detection System
 
-````markdown
-# 🛡️ Real-Time Violence Detection System
-
-![Python](https://img.shields.io/badge/Python-3.11-blue) ![TensorFlow](https://img.shields.io/badge/TensorFlow-Keras-orange) ![Streamlit](https://img.shields.io/badge/Streamlit-UI-red)
-
-**Detect violent behavior in live videos or uploaded clips using AI in real-time.**  
-Leveraging **deep learning (3D CNN)**, **OpenCV**, and **Streamlit**, this system is lightweight and deployable on low-end machines.
+**AI-powered system to detect violent behavior in live videos or uploaded clips.**  
+Uses **3D CNN**, **OpenCV**, and **Streamlit** for a lightweight, real-time monitoring solution.
 
 ---
 
-## 🚀 Features
+## Features
 
-- ✅ Real-time live webcam detection  
-- ✅ Video upload & batch processing  
-- ✅ Automatic snapshots on violence detection  
-- ✅ 🔊 Sound alert (`alert.wav`)  
-- ✅ 📧 Email notifications with snapshots  
-- ✅ Friendly, interactive UI via [Streamlit](https://streamlit.io/)  
-- ✅ Lightweight and efficient  
-
----
-
-## 🧠 Model Info
-
-- **Type:** Binary classifier (`Violence` vs `Normal`)  
-- **Framework:** TensorFlow/Keras  
-- **Input:** 64×64 RGB frames, sequence length 16  
-- **File:** `Models/violence.h5` (replaceable with your own trained model)  
+- Real-time webcam monitoring  
+- Upload and analyze video files  
+- Snapshots saved automatically on detection  
+- Plays an alert sound (`alert.wav`)  
+- Sends an email with the snapshot attached  
+- Runs efficiently on mid-range systems  
+- Simple Streamlit UI for ease of use  
 
 ---
 
-## 📊 Dataset
+## Model Details
 
-- **Name:** RWF-2000 (Kaggle)  
-- **Total Videos:** 2,000 (1,000 Fight / 1,000 NonFight)  
-- **Clip Duration:** 5–10 sec, original resolution 320×240  
-- **Preprocessed:** 64×64  
+- Input: 64×64 RGB frames  
+- Sequence length: 16 frames  
+- Model: Binary classifier (`Violence` vs `Normal`)  
+- Framework: TensorFlow/Keras  
+- File: `Models/violence.h5`  
 
-```bash
-# Kaggle CLI download
-!kaggle datasets download -d vulamnguyen/rwf2000
-````
-
-> Dataset not included — download manually from Kaggle.
+*You can replace the model with your own trained version in the same format.*
 
 ---
 
-## 🗂️ Project Structure
+## Dataset
+
+- Dataset: **RWF-2000** (2,000 short clips, 5–10 seconds each)  
+- 1,000 fight videos + 1,000 non-fight videos  
+- Original resolution: 320×240 → resized to 64×64  
+
+[RWF-2000 on Kaggle](https://www.kaggle.com/datasets/vulamnguyen/rwf2000)  
+
+> Dataset is not included. Please download manually.
+
+---
+
+## Project Structure
 
 ```
+
 Violence-Detection/
 │
-├── app.py                # Main Streamlit application
-├── alert.wav             # Sound alert
-├── requirements.txt
-├── README.md
-│
+├── app.py              # Streamlit app
+├── alert.wav           # Sound alert
+├── requirements.txt    # Dependencies
 ├── Models/
-│   └── violence.h5
-├── snapshots/            # Auto-saved snapshots
-├── test_videos/          # Optional test videos
-└── .gitignore
-```
+│   └── violence.h5     # Trained model
+├── snapshots/          # Saved frames on detection
+├── test_videos/        # Optional test clips
+└── README.md
+
+````
 
 ---
 
-## ⚙️ Installation
+## Setup
 
 ```bash
+# Create a virtual environment
 python -m venv venv
-source venv/bin/activate  # Windows: venv\Scripts\activate
+source venv/bin/activate   # Windows: venv\Scripts\activate
+
+# Install dependencies
 pip install -r requirements.txt
-```
+````
 
 ---
 
-## 💻 Usage
+## Run the App
 
 ```bash
 streamlit run app.py
 ```
 
-* Modes:
+Modes available:
 
-  * 📹 Live Camera Monitoring
-  * 📁 Upload a Video
+* Live Camera Monitoring
+* Upload a Video
 
-* Violence triggers: snapshot saved, sound alert, and email notification.
+Detected violence triggers: snapshot saved, sound alert, and email notification.
 
 ---
 
-## 📧 Email Alert Setup
+## Email Alerts
 
-1. Enable **2-Step Verification** in Gmail
-2. Generate **App Password**
-3. Update `app.py`:
+1. Enable 2-Step Verification in your Gmail account
+2. Generate an App Password
+3. Update `app.py` with your credentials:
 
 ```python
 msg['From'] = "your_email@gmail.com"
@@ -103,42 +101,40 @@ smtp.login("your_email@gmail.com", "your_app_password")
 
 ---
 
-## 🔊 Sound Alert
+## Sound Alerts
 
-* File: `alert.wav`
-* Replaceable with your own sound
-
----
-
-## 🧪 Sample Output
-
-* Frame saved to `snapshots/`
-* Sound alert played
-* Email sent with snapshot
-* Live frame annotated
+* Plays `alert.wav` on detection
+* Replaceable with any `.wav` file
 
 ---
 
-## 🛠️ Customization
+## Detection Workflow
 
-* Replace model: `Models/violence.h5`
-* Adjust confidence threshold: `CONFIDENCE_THRESHOLD`
-* Change frame size: `FRAME_SIZE`
-* Modify sound/email behavior
+* Snapshot saved in `snapshots/`
+* Alert sound played
+* Email sent with snapshot attached
+* Live frame annotated in the UI
 
----
+**Pipeline:**
 
-### 💡 Tips to Make It Stand Out
-
-* Add a **GIF of live detection** at the top
-* Include a **1-minute demo video** link
-* Add a **workflow diagram**: `Video → Preprocessing → Model → Alert/Email`
-
+```
+Video Input → Preprocessing → 3D CNN → Prediction → Snapshot / Sound / Email Alert
 ```
 
 ---
 
-If you want, I can now **rewrite the README for your Multi-Agent Debate and Gym-AI-Trainer projects** in this **same polished Markdown style**, so your GitHub profile looks like a professional AI portfolio with **three top pinned projects**.  
+## Customization & Future Enhancements
 
-Do you want me to do that next?
-```
+* Swap in your own trained model
+* Adjust confidence threshold in `app.py`
+* Change frame size if required by model
+* Replace sound or modify email behavior
+* Add bounding boxes, multi-camera support, or dashboard
+* Deploy on Raspberry Pi or cloud
+
+---
+
+## Impact
+
+> Helps security personnel detect violent behavior automatically, reducing response time and improving safety.
+
