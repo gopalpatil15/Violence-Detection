@@ -1,148 +1,144 @@
+
+````markdown
 # 🛡️ Real-Time Violence Detection System
 
-This project implements a real-time violence detection system using **deep learning**, **OpenCV**, and **Streamlit**. It leverages a pre-trained binary classification model (e.g.3D CNN) to identify violent behavior in videos, either live from a webcam or from an uploaded video file.
+![Python](https://img.shields.io/badge/Python-3.11-blue) ![TensorFlow](https://img.shields.io/badge/TensorFlow-Keras-orange) ![Streamlit](https://img.shields.io/badge/Streamlit-UI-red)
+
+**Detect violent behavior in live videos or uploaded clips using AI in real-time.**  
+Leveraging **deep learning (3D CNN)**, **OpenCV**, and **Streamlit**, this system is lightweight and deployable on low-end machines.
 
 ---
 
 ## 🚀 Features
 
-✅ Real-time video feed violence detection  
-✅ Video upload and batch processing support  
-✅ Automatic snapshot capture when violence is detected  
-✅ 🔊 Sound alert on detection (`alert.wav`)  
-✅ 📧 Email notification with attached snapshot  
-✅ Lightweight and efficient – works on low-end systems  
-✅ Friendly user interface via [Streamlit](https://streamlit.io/)
+- ✅ Real-time live webcam detection  
+- ✅ Video upload & batch processing  
+- ✅ Automatic snapshots on violence detection  
+- ✅ 🔊 Sound alert (`alert.wav`)  
+- ✅ 📧 Email notifications with snapshots  
+- ✅ Friendly, interactive UI via [Streamlit](https://streamlit.io/)  
+- ✅ Lightweight and efficient  
 
 ---
 
 ## 🧠 Model Info
 
-- **Input size:** 64x64 RGB frames  
-- **Sequence length:** 16 frames  
-- **Model type:** Binary classifier (`Violence` vs `Normal`)  
+- **Type:** Binary classifier (`Violence` vs `Normal`)  
 - **Framework:** TensorFlow/Keras  
-- **File:** `Models/violence.h5`
-
-> You can replace `violence.h5` with your own trained model in the same format.
+- **Input:** 64×64 RGB frames, sequence length 16  
+- **File:** `Models/violence.h5` (replaceable with your own trained model)  
 
 ---
-📊 Dataset Information
 
-The model was trained on the RWF-2000 dataset.
+## 📊 Dataset
 
-Dataset Details:
-----------------
-- Total Videos: 2,000
-  - Fight: 1,000 videos
-  - NonFight: 1,000 videos
+- **Name:** RWF-2000 (Kaggle)  
+- **Total Videos:** 2,000 (1,000 Fight / 1,000 NonFight)  
+- **Clip Duration:** 5–10 sec, original resolution 320×240  
+- **Preprocessed:** 64×64  
 
-- Clip Duration: 5–10 seconds
-- Original Resolution: 320×240
-- Preprocessed Size: 64×64
-
-Source:
--------
-Dataset Name: RWF-2000
-Kaggle URL: https://www.kaggle.com/datasets/vulamnguyen/rwf2000
-
-Download Command (for Kaggle CLI):
------------------------------------
+```bash
+# Kaggle CLI download
 !kaggle datasets download -d vulamnguyen/rwf2000
+````
 
-Note:
------
-This dataset is not included in this repository.
-Please download it manually from Kaggle before training or inference.
+> Dataset not included — download manually from Kaggle.
 
+---
 
 ## 🗂️ Project Structure
 
 ```
 Violence-Detection/
 │
-├── app.py                     # Main Streamlit application
-├── alert.wav                  # Sound alert played on detection
-├── requirements.txt           # All dependencies
-├── README.md                  # You're reading it
+├── app.py                # Main Streamlit application
+├── alert.wav             # Sound alert
+├── requirements.txt
+├── README.md
 │
 ├── Models/
-│   └── violence.h5            # Trained Keras model file
-│
-├── snapshots/                 # Auto-generated snapshots of violence
-├── test_videos/               # (Optional) Videos for offline testing
-└── .gitignore                 # Ignores model files, snapshots, etc.
+│   └── violence.h5
+├── snapshots/            # Auto-saved snapshots
+├── test_videos/          # Optional test videos
+└── .gitignore
 ```
 
 ---
 
 ## ⚙️ Installation
 
-### 🐍 Python Environment
-
 ```bash
-# (Recommended) Create a virtual environment
 python -m venv venv
-source venv/bin/activate  # or venv\Scripts\activate on Windows
-
-# Install required packages
+source venv/bin/activate  # Windows: venv\Scripts\activate
 pip install -r requirements.txt
 ```
 
 ---
 
-## 💻 How to Run
+## 💻 Usage
 
 ```bash
 streamlit run app.py
 ```
 
-> This will launch a browser interface with two modes:
-> - 📹 Live Camera Monitoring
-> - 📁 Upload a Video
+* Modes:
+
+  * 📹 Live Camera Monitoring
+  * 📁 Upload a Video
+
+* Violence triggers: snapshot saved, sound alert, and email notification.
 
 ---
 
-## 📧 Email Alert Configuration
+## 📧 Email Alert Setup
 
-The email system uses a static sender Gmail account (e.g., `xyz.security.alert@gmail.com`) with an app password.
+1. Enable **2-Step Verification** in Gmail
+2. Generate **App Password**
+3. Update `app.py`:
 
-**To set up your own:**
-1. Enable **2-Step Verification** on your Gmail
-2. Generate an **App Password** in your Google Account settings
-3. Update `app.py` with:
-   ```python
-   msg['From'] = "your_email@gmail.com"
-   smtp.login("your_email@gmail.com", "your_app_password")
-   ```
+```python
+msg['From'] = "your_email@gmail.com"
+smtp.login("your_email@gmail.com", "your_app_password")
+```
 
 ---
 
 ## 🔊 Sound Alert
 
-On detecting violence, a short warning sound (`alert.wav`) is played using `pygame`.  
-You can replace it with any other sound file.
+* File: `alert.wav`
+* Replaceable with your own sound
 
 ---
 
 ## 🧪 Sample Output
 
-When violence is detected:
-- Frame is saved to `snapshots/` with timestamp
-- Sound is played
-- Email is sent with attached snapshot
-- Live frame is annotated and displayed
+* Frame saved to `snapshots/`
+* Sound alert played
+* Email sent with snapshot
+* Live frame annotated
 
 ---
 
 ## 🛠️ Customization
 
-You can modify:
-- **Model**: Replace `Models/violence.h5` with your own
-- **Confidence Threshold**: Adjust `CONFIDENCE_THRESHOLD` in `app.py`
-- **Frame Size**: Change `FRAME_SIZE` to match your model input
-- **Sound or Email Behavior**
+* Replace model: `Models/violence.h5`
+* Adjust confidence threshold: `CONFIDENCE_THRESHOLD`
+* Change frame size: `FRAME_SIZE`
+* Modify sound/email behavior
 
 ---
 
+### 💡 Tips to Make It Stand Out
 
+* Add a **GIF of live detection** at the top
+* Include a **1-minute demo video** link
+* Add a **workflow diagram**: `Video → Preprocessing → Model → Alert/Email`
+
+```
+
+---
+
+If you want, I can now **rewrite the README for your Multi-Agent Debate and Gym-AI-Trainer projects** in this **same polished Markdown style**, so your GitHub profile looks like a professional AI portfolio with **three top pinned projects**.  
+
+Do you want me to do that next?
+```
