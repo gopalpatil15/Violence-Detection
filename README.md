@@ -133,6 +133,9 @@ Video Input → Preprocessing → 3D CNN → Prediction → Snapshot / Sound / E
 * Deploy on Raspberry Pi or cloud
 
 ---
+## Demo Preview
+
+![Demo](media/demo.gif)
 
 ## Impact
 
