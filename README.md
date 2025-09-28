@@ -135,7 +135,7 @@ Video Input → Preprocessing → 3D CNN → Prediction → Snapshot / Sound / E
 ---
 ## Demo Preview
 
-![Demo](media/demo.gif)
+![Demo](https://github.com/user-attachments/assets/61ebea80-3cde-475d-949e-023de75cf853)
 
 ## Impact
 
