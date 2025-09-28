@@ -1,3 +1,6 @@
+## Demo Preview
+https://github.com/user-attachments/assets/61ebea80-3cde-475d-949e-023de75cf853
+
 # Real-Time Violence Detection System
 
 **AI-powered system to detect violent behavior in live videos or uploaded clips.**  
@@ -133,9 +136,6 @@ Video Input → Preprocessing → 3D CNN → Prediction → Snapshot / Sound / E
 * Deploy on Raspberry Pi or cloud
 
 ---
-## Demo Preview
-
-![Demo](https://github.com/user-attachments/assets/61ebea80-3cde-475d-949e-023de75cf853)
 
 ## Impact
 
